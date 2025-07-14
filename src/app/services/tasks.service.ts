@@ -18,7 +18,13 @@ export class TasksService {
 
   addTask(task: string) {
     this.http
-      .post(`${this.baseUrl}/tasks`, task)
+      .post(
+        `${this.baseUrl}/tasks`,
+        JSON.stringify(task), // wrap the string in JSON
+        {
+          headers: { 'Content-Type': 'application/json' }, // tell the server it's JSON
+        }
+      )
       .subscribe(() => this.loadTasks());
   }
 }
