@@ -32,3 +32,16 @@ button {
     cursor: not-allowed;
   }
 }
+
+input,
+textarea,
+select {
+  all: unset;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+}
