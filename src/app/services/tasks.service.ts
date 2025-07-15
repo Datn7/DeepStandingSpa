@@ -8,23 +8,15 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class TasksService {
-  private baseUrl = `${environment.apiUrl}/tasks`;
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
-  getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.baseUrl);
+  getTasks() {
+    return this.http.get<Task[]>(`${this.baseUrl}/tasks`);
   }
 
-  addTask(task: Task): Observable<any> {
-    return this.http.post(this.baseUrl, task);
-  }
-
-  deleteTask(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
-  }
-
-  updateTask(id: number, task: Task): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, task);
+  addTask(task: Task) {
+    return this.http.post(`${this.baseUrl}/tasks`, task);
   }
 }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
-  Validators,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TasksService } from '../../services/tasks.service';
@@ -12,15 +12,18 @@ import { Task } from '../../models/task.model';
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
-  taskForm: FormGroup;
+  taskForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private taskService: TasksService) {
+  constructor(private fb: FormBuilder, private tasksService: TasksService) {}
+
+  ngOnInit(): void {
+    this.loadTasks();
+
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
@@ -28,23 +31,24 @@ export class TasksComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.loadTasks();
-  }
-
-  loadTasks() {
-    this.taskService.getTasks().subscribe((data) => {
-      this.tasks = data;
+  loadTasks(): void {
+    this.tasksService.getTasks().subscribe({
+      next: (data) => (this.tasks = data),
+      error: (err) => console.error('Failed to load tasks', err),
     });
   }
 
-  addTask() {
-    if (this.taskForm.valid) {
-      const task = this.taskForm.value as Task;
-      this.taskService.addTask(task).subscribe(() => {
-        this.loadTasks();
-        this.taskForm.reset({ priority: 'Normal' });
-      });
-    }
+  addTask(): void {
+    if (this.taskForm.invalid) return;
+
+    const task = this.taskForm.value;
+
+    this.tasksService.addTask(task).subscribe({
+      next: () => {
+        this.loadTasks(); // refresh list
+        this.taskForm.reset({ priority: 'Normal' }); // reset form
+      },
+      error: (err) => console.error('Add task failed', err),
+    });
   }
 }
