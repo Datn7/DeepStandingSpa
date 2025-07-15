@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { signal } from '@angular/core';
+import { Task } from '../models/task.model';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class TasksService {
-  tasks = signal<string[]>([]);
-  private baseUrl = environment.apiUrl;
+  private baseUrl = `${environment.apiUrl}/tasks`;
 
   constructor(private http: HttpClient) {}
 
-  loadTasks() {
-    this.http
-      .get<string[]>(`${this.baseUrl}/tasks`)
-      .subscribe((data) => this.tasks.set(data));
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(this.baseUrl);
   }
 
-  addTask(task: string) {
-    this.http
-      .post(
-        `${this.baseUrl}/tasks`,
-        JSON.stringify(task), // wrap the string in JSON
-        {
-          headers: { 'Content-Type': 'application/json' }, // tell the server it's JSON
-        }
-      )
-      .subscribe(() => this.loadTasks());
+  addTask(task: Task): Observable<any> {
+    return this.http.post(this.baseUrl, task);
+  }
+
+  deleteTask(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  updateTask(id: number, task: Task): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, task);
   }
 }
