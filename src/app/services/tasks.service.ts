@@ -19,4 +19,8 @@ export class TasksService {
   addTask(task: Task) {
     return this.http.post(`${this.baseUrl}/tasks`, task);
   }
+
+  deleteTask(title: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/tasks/${title}`);
+  }
 }

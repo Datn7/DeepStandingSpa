@@ -31,3 +31,17 @@ button {
     cursor: not-allowed;
   }
 }
+
+.deleteButton {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}

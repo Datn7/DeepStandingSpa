@@ -14,6 +14,7 @@ import { Task } from '../../models/task.model';
   templateUrl: './tasks.component.html',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
+  styleUrls: ['./tasks.component.scss'],
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
@@ -49,6 +50,13 @@ export class TasksComponent implements OnInit {
         this.taskForm.reset({ priority: 'Normal' }); // reset form
       },
       error: (err) => console.error('Add task failed', err),
+    });
+  }
+
+  deleteTask(title: string): void {
+    this.tasksService.deleteTask(title).subscribe({
+      next: () => this.loadTasks(), // Refresh list
+      error: (err) => console.error('Delete failed', err),
     });
   }
 }
