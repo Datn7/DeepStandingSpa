@@ -19,6 +19,9 @@ import { Task } from '../../models/task.model';
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
   taskForm!: FormGroup;
+  editForm!: FormGroup;
+  editingTitle: string | null = null;
+  showAddForm: boolean = false;
 
   constructor(private fb: FormBuilder, private tasksService: TasksService) {}
 
@@ -30,12 +33,21 @@ export class TasksComponent implements OnInit {
       description: [''],
       priority: ['Normal'],
     });
+
+    this.editForm = this.fb.group({
+      title: ['', Validators.required],
+      description: [''],
+      priority: ['Normal'],
+    });
   }
 
   loadTasks(): void {
     this.tasksService.getTasks().subscribe({
-      next: (data) => (this.tasks = data),
-      error: (err) => console.error('Failed to load tasks', err),
+      next: (data) => {
+        console.log('API responded with:', data);
+        this.tasks = data;
+      },
+      error: (err) => console.error('Failed to load tasks:', err),
     });
   }
 
@@ -46,8 +58,8 @@ export class TasksComponent implements OnInit {
 
     this.tasksService.addTask(task).subscribe({
       next: () => {
-        this.loadTasks(); // refresh list
-        this.taskForm.reset({ priority: 'Normal' }); // reset form
+        this.loadTasks();
+        this.taskForm.reset({ priority: 'Normal' });
       },
       error: (err) => console.error('Add task failed', err),
     });
@@ -55,8 +67,39 @@ export class TasksComponent implements OnInit {
 
   deleteTask(title: string): void {
     this.tasksService.deleteTask(title).subscribe({
-      next: () => this.loadTasks(), // Refresh list
+      next: () => this.loadTasks(),
       error: (err) => console.error('Delete failed', err),
     });
+  }
+
+  startEdit(task: Task): void {
+    this.editingTitle = task.title;
+    this.editForm.setValue({
+      title: task.title,
+      description: task.description || '',
+      priority: task.priority,
+    });
+  }
+
+  cancelEdit(): void {
+    this.editingTitle = null;
+  }
+
+  saveEdit(originalTitle: string): void {
+    if (this.editForm.invalid) return;
+
+    const updatedTask = this.editForm.value;
+
+    this.tasksService.updateTask(originalTitle, updatedTask).subscribe({
+      next: () => {
+        this.loadTasks();
+        this.cancelEdit();
+      },
+      error: (err) => console.error('Update failed', err),
+    });
+  }
+
+  toggleAddForm(): void {
+    this.showAddForm = !this.showAddForm;
   }
 }

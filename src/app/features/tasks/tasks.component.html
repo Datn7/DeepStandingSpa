@@ -1,29 +1,73 @@
-<h2>Task List</h2>
+<!-- Header with Add button -->
+<div style="display: flex; justify-content: space-between; align-items: center">
+  <h2>Task List</h2>
+  <button (click)="toggleAddForm()">➕ Add</button>
+</div>
+
+<!-- Add Task Form (conditionally shown) -->
+<div *ngIf="showAddForm">
+  <hr />
+  <h3>Add New Task</h3>
+
+  <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+    <label for="title">Title:</label><br />
+    <input id="title" type="text" formControlName="title" /><br /><br />
+
+    <label for="description">Description:</label><br />
+    <textarea id="description" formControlName="description"></textarea
+    ><br /><br />
+
+    <label for="priority">Priority:</label><br />
+    <select id="priority" formControlName="priority">
+      <option>Low</option>
+      <option>Normal</option>
+      <option>High</option></select
+    ><br /><br />
+
+    <button type="submit" [disabled]="taskForm.invalid">✅ Submit</button>
+    <button type="button" (click)="toggleAddForm()">❌ Cancel</button>
+  </form>
+</div>
+
+<!-- Task List -->
 <ul>
   <li *ngFor="let task of tasks">
-    {{ task.title }} - {{ task.priority }}
-    <button (click)="deleteTask(task.title)" class="deleteButton">
-      🗑️ Delete
-    </button>
+    <!-- View mode -->
+    <div *ngIf="editingTitle !== task.title">
+      <strong>{{ task.title }}</strong> - {{ task.priority }}
+      <br />
+      <em>{{ task.description }}</em>
+      <br /><br />
+      <button (click)="startEdit(task)">✏️ Edit</button>
+      <button (click)="deleteTask(task.title)">🗑️ Delete</button>
+    </div>
+
+    <!-- Edit mode -->
+    <div *ngIf="editingTitle === task.title">
+      <form [formGroup]="editForm" (ngSubmit)="saveEdit(task.title)">
+        <label for="edit-title">Title:</label><br />
+        <input
+          id="edit-title"
+          type="text"
+          formControlName="title"
+        /><br /><br />
+
+        <label for="edit-description">Description:</label><br />
+        <textarea id="edit-description" formControlName="description"></textarea
+        ><br /><br />
+
+        <label for="edit-priority">Priority:</label><br />
+        <select id="edit-priority" formControlName="priority">
+          <option>Low</option>
+          <option>Normal</option>
+          <option>High</option></select
+        ><br /><br />
+
+        <button type="submit" [disabled]="editForm.invalid">💾 Save</button>
+        <button type="button" (click)="cancelEdit()">❌ Cancel</button>
+      </form>
+    </div>
+
+    <hr />
   </li>
 </ul>
-
-<hr />
-
-<h3>Add New Task</h3>
-<form [formGroup]="taskForm" (ngSubmit)="addTask()">
-  <label>Title:</label>
-  <input type="text" formControlName="title" /><br /><br />
-
-  <label>Description:</label>
-  <textarea formControlName="description"></textarea><br /><br />
-
-  <label>Priority:</label>
-  <select formControlName="priority">
-    <option>Low</option>
-    <option>Normal</option>
-    <option>High</option></select
-  ><br /><br />
-
-  <button type="submit" [disabled]="taskForm.invalid">Add Task</button>
-</form>
