@@ -8,8 +8,13 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +23,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     importProvidersFrom(FormsModule, CommonModule),
     provideHttpClient(withFetch()),
+    provideHttpClient(withInterceptors([AuthInterceptor])),
   ],
 };

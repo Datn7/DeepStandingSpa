@@ -1,26 +1,32 @@
 <nav>
-  <a
-    routerLink="/"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    >Home</a
-  >
-  <a
-    routerLink="/tasks"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    >Tasks</a
-  >
-  <a
-    routerLink="/db-tasks"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    >DB Tasks</a
-  >
-  <a
-    routerLink="/di-demo"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    >DI Demo</a
-  >
+  <div class="nav-left">
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Home</a
+    >
+    <a
+      routerLink="/tasks"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Tasks</a
+    >
+    <a
+      routerLink="/db-tasks"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >DB Tasks</a
+    >
+    <a
+      routerLink="/di-demo"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >DI Demo</a
+    >
+  </div>
+
+  <div class="nav-right">
+    <a routerLink="/login" class="btn btn-outline-light">Login</a>
+  </div>
 </nav>
