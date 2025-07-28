@@ -1,0 +1,38 @@
+<p>db-tasks works!</p>
+<h2>Tasks</h2>
+
+<!-- Add Task Form -->
+<input [(ngModel)]="newTask.title" placeholder="Title" />
+<input [(ngModel)]="newTask.description" placeholder="Description" />
+<select [(ngModel)]="newTask.priority">
+  <option>Low</option>
+  <option>Normal</option>
+  <option>High</option>
+</select>
+<button (click)="createTask()">Add Task</button>
+
+<hr />
+
+<!-- List of Tasks -->
+<ul>
+  <li *ngFor="let task of tasks">
+    <b>{{ task.title }}</b> - {{ task.priority }}
+    <p>{{ task.description }}</p>
+    <button (click)="setEditTask(task)">Edit</button>
+    <button (click)="deleteTask(task.id)">Delete</button>
+  </li>
+</ul>
+
+<!-- Edit Task -->
+<div *ngIf="editTask">
+  <h3>Edit Task</h3>
+  <input [(ngModel)]="editTask.title" placeholder="Title" />
+  <input [(ngModel)]="editTask.description" placeholder="Description" />
+  <select [(ngModel)]="editTask.priority">
+    <option>Low</option>
+    <option>Normal</option>
+    <option>High</option>
+  </select>
+  <button (click)="updateTask()">Save</button>
+  <button (click)="editTask = null">Cancel</button>
+</div>
