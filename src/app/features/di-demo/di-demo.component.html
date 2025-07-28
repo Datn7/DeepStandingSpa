@@ -1,0 +1,9 @@
+<h2>DI Lifetime Demo</h2>
+
+<div *ngIf="result">
+  <p><strong>Singleton:</strong> {{ result.singleton }}</p>
+  <p><strong>Scoped:</strong> {{ result.scoped }}</p>
+  <p><strong>Transient:</strong> {{ result.transient }}</p>
+</div>
+
+<button (click)="load()">Refresh</button>
