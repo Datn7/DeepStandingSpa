@@ -27,6 +27,28 @@
   </div>
 
   <div class="nav-right">
-    <a routerLink="/login" class="btn btn-outline-light">Login</a>
+    <!-- IF NOT LOGGED IN -->
+    <a *ngIf="!user" routerLink="/login" class="btn btn-outline-light">Login</a>
+
+    <div *ngIf="user" class="dropdown">
+      <button
+        class="btn btn-dark dropdown-toggle"
+        type="button"
+        id="userDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        {{ user.email }}
+      </button>
+      <ul
+        class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+        aria-labelledby="userDropdown"
+      >
+        <li><a class="dropdown-item" routerLink="/profile">My Profile</a></li>
+        <li>
+          <button class="dropdown-item" (click)="logout()">Logout</button>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

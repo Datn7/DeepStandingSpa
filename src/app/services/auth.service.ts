@@ -7,7 +7,10 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   private apiUrl = 'https://localhost:5001/api/auth';
   private tokenKey = 'authToken';
-  private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
+  private loggedIn = new BehaviorSubject<boolean>(this.isLoggedIn());
+  public get loggedIn$(): Observable<boolean> {
+    return this.loggedIn.asObservable();
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -36,8 +39,8 @@ export class AuthService {
     this.loggedIn.next(false);
   }
 
-  isLoggedIn(): Observable<boolean> {
-    return this.loggedIn.asObservable();
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem(this.tokenKey);
   }
 
   getToken(): string | null {
@@ -47,11 +50,14 @@ export class AuthService {
   private hasToken(): boolean {
     return !!localStorage.getItem(this.tokenKey);
   }
+
   getCurrentUser(): any {
     const token = localStorage.getItem(this.tokenKey);
     if (!token) return null;
-
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    return payload;
+    try {
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch {
+      return null;
+    }
   }
 }
