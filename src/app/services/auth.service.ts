@@ -47,4 +47,11 @@ export class AuthService {
   private hasToken(): boolean {
     return !!localStorage.getItem(this.tokenKey);
   }
+  getCurrentUser(): any {
+    const token = localStorage.getItem(this.tokenKey);
+    if (!token) return null;
+
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload;
+  }
 }

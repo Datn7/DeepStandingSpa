@@ -5,6 +5,7 @@ import { DbTasksComponent } from './features/db-tasks/db-tasks.component';
 import { DiDemoComponent } from './features/di-demo/di-demo.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
+import { ProfileComponent } from './features/auth/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'di-demo', component: DiDemoComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
 ];
