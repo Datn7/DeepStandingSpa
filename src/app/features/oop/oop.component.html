@@ -19,3 +19,55 @@
     </div>
   </li>
 </ul>
+
+<h2 class="mb-3">Visual Guide to OOP Principles</h2>
+
+<div *ngFor="let shape of shapes" class="card mb-3 p-3">
+  <h4>{{ shape.name }} ({{ shape.type }})</h4>
+  <p>🔢 <strong>Area:</strong> {{ shape.area }}</p>
+
+  <ul>
+    <li>
+      🧱 <strong>Class:</strong> This shape is an instance of a class (<code>{{
+        shape.type
+      }}</code
+      >)
+    </li>
+    <li>
+      🧬 <strong>Inheritance:</strong> Inherits from abstract class
+      <code>Shape</code>
+    </li>
+    <li>
+      🧠 <strong>Polymorphism:</strong> The <code>GetArea()</code> method
+      behaves differently in each subclass
+    </li>
+    <li>
+      🛡️ <strong>Encapsulation:</strong> Uses properties like
+      <code>Name</code> and <code>Radius</code> to protect data
+    </li>
+    <li>
+      🚫 <strong>Abstraction:</strong> You cannot create a
+      <code>Shape</code> directly — it’s abstract
+    </li>
+  </ul>
+</div>
+
+<div class="alert alert-info mt-4">
+  <h5>🧠 What Does This All Mean?</h5>
+  <p>
+    Imagine <strong>Shape</strong> is a blueprint — like a document saying
+    "every shape must have a name and a way to calculate area". But it doesn’t
+    know how to do it.
+  </p>
+  <p>
+    <strong>Circle</strong> and <strong>Square</strong> take that blueprint and
+    actually implement the logic differently. This is called
+    <em>inheritance</em> and <em>polymorphism</em>.
+  </p>
+  <p>
+    <em>Encapsulation</em> protects the data — just like your car’s engine is
+    hidden and you control it with pedals. And <em>abstraction</em> means you
+    can’t use the blueprint (Shape) directly — you must use a concrete version
+    (like Circle).
+  </p>
+</div>
