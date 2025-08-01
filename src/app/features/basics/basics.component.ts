@@ -46,6 +46,11 @@ export class BasicsComponent {
   }
 
   calculate(a: number, b: number, op: string) {
+    if (isNaN(a) || isNaN(b) || !op) {
+      console.error('Invalid input:', { a, b, op });
+      return;
+    }
+
     console.log('CALCULATE INPUTS', a, b, op);
     this.basicsService.calculate(a, b, op).subscribe({
       next: (data) => (this.calcResult = data),

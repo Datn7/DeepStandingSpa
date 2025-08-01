@@ -24,7 +24,10 @@ export class BasicsService {
   }
 
   calculate(a: number, b: number, op: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/calculate?a=${a}&b=${b}&op=${op}`);
+    const encodedOp = encodeURIComponent(op);
+    return this.http.get(
+      `${this.apiUrl}/calculate?a=${a}&b=${b}&op=${encodedOp}`
+    );
   }
 
   getBooks(): Observable<Book[]> {

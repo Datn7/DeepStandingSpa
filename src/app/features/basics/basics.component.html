@@ -11,7 +11,9 @@
 <h3>Even or Odd</h3>
 <input type="number" #num />
 <button (click)="checkEvenOdd(+num.value)">Check</button>
-
+<p *ngIf="evenOddResult">
+  Result: {{ evenOddResult.number }} is {{ evenOddResult.result }}
+</p>
 <hr />
 
 <h3>Calculator</h3>
