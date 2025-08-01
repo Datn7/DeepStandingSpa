@@ -1,0 +1,29 @@
+<p>collections works!</p>
+<h2>📚 Collections and Generics</h2>
+
+<h3>List</h3>
+<ul>
+  <li *ngFor="let item of list">{{ item }}</li>
+</ul>
+
+<h3>Dictionary</h3>
+<ul>
+  <li *ngFor="let key of objectKeys(dictionary)">
+    {{ key }}: {{ dictionary[key] }}
+  </li>
+</ul>
+
+<h3>Queue (FIFO)</h3>
+<ul>
+  <li *ngFor="let item of queue">{{ item }}</li>
+</ul>
+
+<h3>Stack (LIFO)</h3>
+<ul>
+  <li *ngFor="let item of stack">{{ item }}</li>
+</ul>
+
+<h3>HashSet (Unique Items)</h3>
+<ul>
+  <li *ngFor="let item of hashset">{{ item }}</li>
+</ul>
