@@ -1,0 +1,44 @@
+<h2 class="mb-4">🧠 Delegates, Func, Action, Predicate, Events</h2>
+<button class="btn btn-primary mb-3" (click)="runAll()">
+  ▶️ Run All Examples
+</button>
+
+<div class="card mb-3">
+  <div class="card-header bg-info text-white">Action</div>
+  <div class="card-body">
+    <p>📢 A method that returns void but accepts input.</p>
+    <code>{{ actionResult }}</code>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header bg-success text-white">Func</div>
+  <div class="card-body">
+    <p>🧮 Func adds two numbers and returns result.</p>
+    <code>4 + 5 = {{ funcResult?.result }}</code>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header bg-warning text-dark">Predicate</div>
+  <div class="card-body">
+    <p>🔍 Predicate checks if number is even.</p>
+    <code>Is 10 even? {{ predicateResult?.isEven }}</code>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header bg-dark text-white">Custom Delegate</div>
+  <div class="card-body">
+    <p>🧑‍🏫 Delegate is a type-safe function pointer.</p>
+    <code>{{ delegateResult }}</code>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header bg-secondary text-white">Event</div>
+  <div class="card-body">
+    <p>📡 Event is triggered when data is received.</p>
+    <code>{{ eventResult?.log }}</code>
+  </div>
+</div>
