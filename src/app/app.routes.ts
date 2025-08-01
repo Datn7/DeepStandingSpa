@@ -9,6 +9,7 @@ import { ProfileComponent } from './features/auth/profile/profile.component';
 import { BasicsComponent } from './features/basics/basics.component';
 import { OopComponent } from './features/oop/oop.component';
 import { CollectionsComponent } from './features/collections/collections.component';
+import { DelegatesComponent } from './features/delegates/delegates.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,4 +22,5 @@ export const routes: Routes = [
   { path: 'basics', component: BasicsComponent },
   { path: 'oop', component: OopComponent },
   { path: 'collections', component: CollectionsComponent },
+  { path: 'delegates', component: DelegatesComponent },
 ];
