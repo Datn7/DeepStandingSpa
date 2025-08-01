@@ -1,29 +1,83 @@
-<p>collections works!</p>
-<h2>📚 Collections and Generics</h2>
+<h2 class="mb-4">🧺 Collections and Generics in C#</h2>
 
-<h3>List</h3>
-<ul>
-  <li *ngFor="let item of list">{{ item }}</li>
-</ul>
+<!-- List<T> -->
+<div class="card mb-3">
+  <div class="card-header bg-primary text-white">
+    📝 List T — Ordered Collection (Duplicates Allowed)
+  </div>
+  <div class="card-body">
+    <p>
+      A <strong>List</strong> is like an expandable array. Items stay in order.
+      You can access them by index, and duplicates are allowed.
+    </p>
+    <ul>
+      <li *ngFor="let item of list">🔹 {{ item }}</li>
+    </ul>
+  </div>
+</div>
 
-<h3>Dictionary</h3>
-<ul>
-  <li *ngFor="let key of objectKeys(dictionary)">
-    {{ key }}: {{ dictionary[key] }}
-  </li>
-</ul>
+<!-- Dictionary<TKey, TValue> -->
+<div class="card mb-3">
+  <div class="card-header bg-success text-white">
+    🗂️ Dictionary TKey, TValue — Key-Value Pairs
+  </div>
+  <div class="card-body">
+    <p>
+      A <strong>Dictionary</strong> maps <em>keys</em> to <em>values</em>. Think
+      of it like a phonebook.
+    </p>
+    <ul>
+      <li *ngFor="let key of objectKeys(dictionary)">
+        🔑 {{ key }} → {{ dictionary[key] }}
+      </li>
+    </ul>
+  </div>
+</div>
 
-<h3>Queue (FIFO)</h3>
-<ul>
-  <li *ngFor="let item of queue">{{ item }}</li>
-</ul>
+<!-- Queue<T> -->
+<div class="card mb-3">
+  <div class="card-header bg-warning">
+    🚶‍♂️ Queue T — First In, First Out (FIFO)
+  </div>
+  <div class="card-body">
+    <p>
+      A <strong>Queue</strong> processes items in the order they were added.
+      Think of people waiting in line.
+    </p>
+    <ul>
+      <li *ngFor="let item of queue">➡️ {{ item }}</li>
+    </ul>
+  </div>
+</div>
 
-<h3>Stack (LIFO)</h3>
-<ul>
-  <li *ngFor="let item of stack">{{ item }}</li>
-</ul>
+<!-- Stack<T> -->
+<div class="card mb-3">
+  <div class="card-header bg-danger text-white">
+    🧱 Stack T — Last In, First Out (LIFO)
+  </div>
+  <div class="card-body">
+    <p>
+      A <strong>Stack</strong> works like a stack of plates — the last one added
+      is the first one removed.
+    </p>
+    <ul>
+      <li *ngFor="let item of stack">⬆️ {{ item }}</li>
+    </ul>
+  </div>
+</div>
 
-<h3>HashSet (Unique Items)</h3>
-<ul>
-  <li *ngFor="let item of hashset">{{ item }}</li>
-</ul>
+<!-- HashSet<T> -->
+<div class="card mb-3">
+  <div class="card-header bg-secondary text-white">
+    🧮 HashSet T — Unique Values Only
+  </div>
+  <div class="card-body">
+    <p>
+      A <strong>HashSet</strong> holds <em>only unique</em> items. Adding a
+      duplicate has no effect.
+    </p>
+    <ul>
+      <li *ngFor="let item of hashset">♻️ {{ item }}</li>
+    </ul>
+  </div>
+</div>
