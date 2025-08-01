@@ -9,7 +9,7 @@
 <hr />
 
 <h3>Even or Odd</h3>
-<input type="number" #num /><!-- Even or Odd -->
+<input type="number" #num />
 <button (click)="checkEvenOdd(+num.value)">Check</button>
 
 <hr />
@@ -24,6 +24,7 @@
   <option>/</option>
 </select>
 <button (click)="calculate(+a.value, +b.value, op.value)">Calculate</button>
+
 <p *ngIf="calcResult">Result: {{ calcResult.result }}</p>
 
 <hr />

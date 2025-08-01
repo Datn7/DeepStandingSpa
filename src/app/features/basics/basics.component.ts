@@ -38,15 +38,19 @@ export class BasicsComponent {
   }
 
   checkEvenOdd(number: number) {
-    this.basicsService
-      .checkEvenOdd(number)
-      .subscribe((data) => (this.evenOddResult = data));
+    console.log('Checking number:', number);
+    this.basicsService.checkEvenOdd(number).subscribe({
+      next: (data) => (this.evenOddResult = data),
+      error: (err) => console.error('EvenOdd Error', err),
+    });
   }
 
   calculate(a: number, b: number, op: string) {
-    this.basicsService
-      .calculate(a, b, op)
-      .subscribe((data) => (this.calcResult = data));
+    console.log('CALCULATE INPUTS', a, b, op);
+    this.basicsService.calculate(a, b, op).subscribe({
+      next: (data) => (this.calcResult = data),
+      error: (err) => console.error('CALCULATION ERROR:', err),
+    });
   }
 
   getBooks() {
