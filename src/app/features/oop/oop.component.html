@@ -1,0 +1,21 @@
+<p>oop works!</p>
+<h2 class="mb-4">OOP Principles in Action</h2>
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let shape of shapes">
+    <strong>{{ shape.name }}</strong> | Type: {{ shape.type }} | Area:
+    {{ shape.area }}
+
+    <div class="mt-1 text-muted">
+      <ng-container [ngSwitch]="shape.type">
+        <span *ngSwitchCase="'Circle'"
+          >🟠 Inherits from Shape and overrides GetArea()</span
+        >
+        <span *ngSwitchCase="'Square'"
+          >🟦 Inherits from Shape and overrides GetArea()</span
+        >
+        <span *ngSwitchDefault>🔷 Shape</span>
+      </ng-container>
+    </div>
+  </li>
+</ul>
