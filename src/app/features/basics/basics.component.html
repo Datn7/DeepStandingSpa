@@ -1,0 +1,42 @@
+<p>basics works!</p>
+<h2>{{ helloMsg }}</h2>
+
+<h3>User Info</h3>
+<p>Name: {{ userInfo?.name }}</p>
+<p>Age: {{ userInfo?.age }}</p>
+<p>Student: {{ userInfo?.isStudent }}</p>
+
+<hr />
+
+<h3>Even or Odd</h3>
+<input type="number" #num /><!-- Even or Odd -->
+<button (click)="checkEvenOdd(+num.value)">Check</button>
+
+<hr />
+
+<h3>Calculator</h3>
+<input type="number" #a />
+<input type="number" #b />
+<select #op>
+  <option>+</option>
+  <option>-</option>
+  <option>*</option>
+  <option>/</option>
+</select>
+<button (click)="calculate(+a.value, +b.value, op.value)">Calculate</button>
+<p *ngIf="calcResult">Result: {{ calcResult.result }}</p>
+
+<hr />
+
+<h3>Books</h3>
+<ul>
+  <li *ngFor="let book of books">
+    "{{ book.title }}" by {{ book.author }} ({{ book.year }})
+  </li>
+</ul>
+
+<h4>Add Book</h4>
+<input [(ngModel)]="newBook.title" placeholder="Title" />
+<input [(ngModel)]="newBook.author" placeholder="Author" />
+<input type="number" [(ngModel)]="newBook.year" placeholder="Year" />
+<button (click)="addBook()">Add</button>

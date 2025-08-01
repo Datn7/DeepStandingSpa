@@ -6,6 +6,7 @@ import { DiDemoComponent } from './features/di-demo/di-demo.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { ProfileComponent } from './features/auth/profile/profile.component';
+import { BasicsComponent } from './features/basics/basics.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,4 +16,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'basics', component: BasicsComponent },
 ];
