@@ -6,52 +6,46 @@
       [routerLinkActiveOptions]="{ exact: true }"
       >Home</a
     >
-    <a
-      routerLink="/tasks"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      >Tasks</a
-    >
-    <a
-      routerLink="/db-tasks"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      >DB Tasks</a
-    >
-    <a
-      routerLink="/di-demo"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      >DI Demo</a
-    >
-    <a
-      routerLink="basics"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      >C# Basics</a
-    >
-    <a
-      routerLink="oop"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      >OOP</a
-    >
-    <a
-      routerLink="collections"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      >Collections</a
-    >
-    <a
-      routerLink="delegates"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      >Delegates</a
-    >
+
+    <!-- Tasks dropdown -->
+    <div class="dropdown">
+      <button
+        class="btn btn-dark dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Tasks
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li><a class="dropdown-item" routerLink="/tasks">Tasks</a></li>
+        <li><a class="dropdown-item" routerLink="/db-tasks">DB Tasks</a></li>
+      </ul>
+    </div>
+
+    <!-- C# Basics dropdown -->
+    <div class="dropdown">
+      <button
+        class="btn btn-dark dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        C# Basics
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li><a class="dropdown-item" routerLink="/basics">C# Basics</a></li>
+        <li><a class="dropdown-item" routerLink="/di-demo">DI Demo</a></li>
+        <li><a class="dropdown-item" routerLink="/oop">OOP</a></li>
+        <li>
+          <a class="dropdown-item" routerLink="/collections">Collections</a>
+        </li>
+        <li><a class="dropdown-item" routerLink="/delegates">Delegates</a></li>
+      </ul>
+    </div>
   </div>
 
   <div class="nav-right">
-    <!-- IF NOT LOGGED IN -->
     <a *ngIf="!user" routerLink="/login" class="btn btn-outline-light">Login</a>
 
     <div *ngIf="user" class="dropdown">
