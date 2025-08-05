@@ -1,72 +1,35 @@
-<h2 class="mb-4">OOP Principles in Action</h2>
+<h2>🧱 Object-Oriented Programming (OOP) Fundamentals</h2>
 
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let shape of shapes">
-    <strong>{{ shape.name }}</strong> | Type: {{ shape.type }} | Area:
-    {{ shape.area }}
+<ng-container *ngFor="let section of categories | keyvalue">
+  <section>
+    <h3>{{ section.key }}</h3>
 
-    <div class="mt-1 text-muted">
-      <ng-container [ngSwitch]="shape.type">
-        <span *ngSwitchCase="'Circle'"
-          >🟠 Inherits from Shape and overrides GetArea()</span
-        >
-        <span *ngSwitchCase="'Square'"
-          >🟦 Inherits from Shape and overrides GetArea()</span
-        >
-        <span *ngSwitchDefault>🔷 Shape</span>
-      </ng-container>
+    <div
+      *ngFor="let ex of section.value"
+      class="code-block"
+      [ngClass]="ex.color"
+    >
+      <div class="code-header">
+        <span class="example-title">{{ ex.title }}</span>
+        <button (click)="showExamples[ex.title] = !showExamples[ex.title]">
+          {{ showExamples[ex.title] ? "Hide" : "Show" }} Example
+        </button>
+      </div>
+
+      <pre
+        *ngIf="showExamples[ex.title]"
+      ><code [innerText]="ex.code"></code></pre>
+
+      <div
+        *ngIf="showExamples[ex.title]"
+        class="output-block"
+        [ngClass]="ex.color"
+      >
+        <p class="output-label">🧪 Output:</p>
+        <pre><code [innerText]="ex.output"></code></pre>
+      </div>
     </div>
-  </li>
-</ul>
+  </section>
 
-<h2 class="mb-3">Visual Guide to OOP Principles</h2>
-
-<div *ngFor="let shape of shapes" class="card mb-3 p-3">
-  <h4>{{ shape.name }} ({{ shape.type }})</h4>
-  <p>🔢 <strong>Area:</strong> {{ shape.area }}</p>
-
-  <ul>
-    <li>
-      🧱 <strong>Class:</strong> This shape is an instance of a class (<code>{{
-        shape.type
-      }}</code
-      >)
-    </li>
-    <li>
-      🧬 <strong>Inheritance:</strong> Inherits from abstract class
-      <code>Shape</code>
-    </li>
-    <li>
-      🧠 <strong>Polymorphism:</strong> The <code>GetArea()</code> method
-      behaves differently in each subclass
-    </li>
-    <li>
-      🛡️ <strong>Encapsulation:</strong> Uses properties like
-      <code>Name</code> and <code>Radius</code> to protect data
-    </li>
-    <li>
-      🚫 <strong>Abstraction:</strong> You cannot create a
-      <code>Shape</code> directly — it’s abstract
-    </li>
-  </ul>
-</div>
-
-<div class="alert alert-info mt-4">
-  <h5>🧠 What Does This All Mean?</h5>
-  <p>
-    Imagine <strong>Shape</strong> is a blueprint — like a document saying
-    "every shape must have a name and a way to calculate area". But it doesn’t
-    know how to do it.
-  </p>
-  <p>
-    <strong>Circle</strong> and <strong>Square</strong> take that blueprint and
-    actually implement the logic differently. This is called
-    <em>inheritance</em> and <em>polymorphism</em>.
-  </p>
-  <p>
-    <em>Encapsulation</em> protects the data — just like your car’s engine is
-    hidden and you control it with pedals. And <em>abstraction</em> means you
-    can’t use the blueprint (Shape) directly — you must use a concrete version
-    (like Circle).
-  </p>
-</div>
+  <hr />
+</ng-container>
