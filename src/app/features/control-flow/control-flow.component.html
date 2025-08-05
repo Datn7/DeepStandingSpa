@@ -1,0 +1,93 @@
+<h2>Control Flow Concepts</h2>
+
+<!-- CONDITIONALS -->
+<section *ngIf="conditionals.length">
+  <h3>Conditional Statements</h3>
+  <p><strong>Types:</strong> {{ conditionals.join(", ") }}</p>
+  <button
+    (click)="showExample = showExample === 'conditionals' ? '' : 'conditionals'"
+  >
+    {{ showExample === "conditionals" ? "Hide Example" : "Show Example" }}
+  </button>
+  <pre
+    *ngIf="showExample === 'conditionals'"
+  ><code [innerText]="conditionalsExample"></code></pre>
+</section>
+
+<hr />
+
+<!-- LOOPS -->
+<section *ngIf="loops.length">
+  <h3>Loops</h3>
+  <p><strong>Types:</strong> {{ loops.join(", ") }}</p>
+  <button (click)="showExample = showExample === 'loops' ? '' : 'loops'">
+    {{ showExample === "loops" ? "Hide Example" : "Show Example" }}
+  </button>
+  <pre
+    *ngIf="showExample === 'loops'"
+  ><code [innerText]="loopsExample"></code></pre>
+</section>
+
+<hr />
+
+<!-- ARRAYS -->
+<section *ngIf="arrays.length">
+  <h3>Arrays</h3>
+  <ul>
+    <li *ngFor="let item of arrays">{{ item }}</li>
+  </ul>
+  <button (click)="showExample = showExample === 'arrays' ? '' : 'arrays'">
+    {{ showExample === "arrays" ? "Hide Example" : "Show Example" }}
+  </button>
+  <pre
+    *ngIf="showExample === 'arrays'"
+  ><code [innerText]="arraysExample"></code></pre>
+</section>
+
+<hr />
+
+<!-- METHODS -->
+<section *ngIf="methods.length">
+  <h3>Methods</h3>
+  <ul>
+    <li *ngFor="let item of methods">{{ item }}</li>
+  </ul>
+  <button (click)="showExample = showExample === 'methods' ? '' : 'methods'">
+    {{ showExample === "methods" ? "Hide Example" : "Show Example" }}
+  </button>
+  <pre
+    *ngIf="showExample === 'methods'"
+  ><code [innerText]="methodsExample"></code></pre>
+</section>
+
+<hr />
+
+<!-- STRINGS -->
+<section *ngIf="strings.length">
+  <h3>Strings</h3>
+  <ul>
+    <li *ngFor="let item of strings">{{ item }}</li>
+  </ul>
+  <button (click)="showExample = showExample === 'strings' ? '' : 'strings'">
+    {{ showExample === "strings" ? "Hide Example" : "Show Example" }}
+  </button>
+  <pre
+    *ngIf="showExample === 'strings'"
+  ><code [innerText]="stringsExample"></code></pre>
+</section>
+
+<hr />
+
+<!-- COMMENTS -->
+<section *ngIf="comments.length">
+  <h3>Comments & Best Practices</h3>
+  <ul>
+    <li *ngFor="let item of comments">{{ item }}</li>
+  </ul>
+  <button (click)="showExample = showExample === 'comments' ? '' : 'comments'">
+    {{ showExample === "comments" ? "Hide Example" : "Show Example" }}
+  </button>
+  <pre
+    *ngIf="showExample === 'comments'"
+  ><code [innerText]="commentsExample"></code></pre>
+</section>
