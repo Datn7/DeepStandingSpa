@@ -14,7 +14,9 @@ import { FundamentalsComponent } from './features/fundamentals/fundamentals.comp
 import { ControlFlowComponent } from './features/control-flow/control-flow.component';
 import { IntermediateComponent } from './features/intermediate/intermediate.component';
 import { AdvancedComponent } from './features/advanced/advanced.component';
-import { StudentComponent } from './features/student/student.component';
+import { StudentsListComponent } from './features/students/students-list/students-list.component';
+import { AddStudentComponent } from './features/students/add-student/add-student.component';
+import { EditStudentComponent } from './features/students/edit-student/edit-student.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,5 +34,7 @@ export const routes: Routes = [
   { path: 'control-flow', component: ControlFlowComponent },
   { path: 'intermediate', component: IntermediateComponent },
   { path: 'advanced', component: AdvancedComponent },
-  { path: 'student', component: StudentComponent },
+  { path: 'students', component: StudentsListComponent },
+  { path: 'add', component: AddStudentComponent },
+  { path: 'students/:id', component: EditStudentComponent },
 ];
