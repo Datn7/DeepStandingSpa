@@ -14,6 +14,7 @@ import { FundamentalsComponent } from './features/fundamentals/fundamentals.comp
 import { ControlFlowComponent } from './features/control-flow/control-flow.component';
 import { IntermediateComponent } from './features/intermediate/intermediate.component';
 import { AdvancedComponent } from './features/advanced/advanced.component';
+import { StudentComponent } from './features/student/student.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,4 +32,5 @@ export const routes: Routes = [
   { path: 'control-flow', component: ControlFlowComponent },
   { path: 'intermediate', component: IntermediateComponent },
   { path: 'advanced', component: AdvancedComponent },
+  { path: 'student', component: StudentComponent },
 ];
