@@ -1,1 +1,59 @@
-<p>fundamentals works!</p>
+<h2>Fundamental Concepts</h2>
+
+<!-- Data Types -->
+<section *ngIf="dataTypes">
+  <h3>Data Types</h3>
+  <p><strong>Value Types:</strong> {{ dataTypes.valueTypes.join(", ") }}</p>
+  <p>
+    <strong>Reference Types:</strong> {{ dataTypes.referenceTypes.join(", ") }}
+  </p>
+
+  <button
+    (click)="showExample = showExample === 'dataTypes' ? '' : 'dataTypes'"
+  >
+    {{ showExample === "dataTypes" ? "Hide Example" : "Show Example" }}
+  </button>
+  <pre
+    *ngIf="showExample === 'dataTypes'"
+  ><code [innerText]="dataTypesExample"></code></pre>
+</section>
+
+<hr />
+
+<!-- Variables -->
+<section *ngIf="variables">
+  <h3>Variables</h3>
+  <p><strong>Declaration:</strong> {{ variables.declaration }}</p>
+  <p><strong>Initialization:</strong> {{ variables.initialization }}</p>
+  <p><strong>Scope:</strong> {{ variables.scope }}</p>
+
+  <button
+    (click)="showExample = showExample === 'variables' ? '' : 'variables'"
+  >
+    {{ showExample === "variables" ? "Hide Example" : "Show Example" }}
+  </button>
+  <pre
+    *ngIf="showExample === 'variables'"
+  ><code [innerText]="variablesExample"></code></pre>
+</section>
+
+<hr />
+
+<!-- Operators -->
+<section *ngIf="operators">
+  <h3>Operators</h3>
+  <p><strong>Arithmetic:</strong> {{ operators.arithmetic.join(", ") }}</p>
+  <p><strong>Assignment:</strong> {{ operators.assignment.join(", ") }}</p>
+  <p><strong>Comparison:</strong> {{ operators.comparison.join(", ") }}</p>
+  <p><strong>Logical:</strong> {{ operators.logical.join(", ") }}</p>
+  <p><strong>Bitwise:</strong> {{ operators.bitwise.join(", ") }}</p>
+
+  <button
+    (click)="showExample = showExample === 'operators' ? '' : 'operators'"
+  >
+    {{ showExample === "operators" ? "Hide Example" : "Show Example" }}
+  </button>
+  <pre
+    *ngIf="showExample === 'operators'"
+  ><code [innerText]="operatorsExample"></code></pre>
+</section>
