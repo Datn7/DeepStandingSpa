@@ -1,0 +1,76 @@
+:host {
+  display: block;
+  padding: 2rem;
+  font-family: "Fira Code", monospace;
+
+  h2 {
+    font-size: 2rem;
+    color: #00bfff;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #00bfff;
+    padding-bottom: 0.5rem;
+  }
+
+  section {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    color: #e0e0e0;
+
+    h3 {
+      color: #4fc3f7;
+      margin-top: 0;
+    }
+
+    ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+      list-style: square;
+    }
+
+    button {
+      margin-top: 0.5rem;
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #555;
+      }
+    }
+
+    pre {
+      background-color: #2d2d2d;
+      color: #c3e88d;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+
+    code {
+      white-space: pre-wrap;
+      display: block;
+    }
+
+    .output-block {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #263238;
+      border-left: 4px solid #00bfa5;
+      border-radius: 6px;
+
+      .output-label {
+        color: #ffca28;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

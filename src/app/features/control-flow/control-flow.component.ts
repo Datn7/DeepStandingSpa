@@ -19,7 +19,7 @@ export class ControlFlowComponent implements OnInit {
 
   showExample = '';
 
-  // Example blocks
+  // Code Examples
   conditionalsExample = `int age = 18;
 if (age >= 18)
 {
@@ -91,7 +91,7 @@ void TryGet(out int result)
     result = 42;
 }
 
-// Method Overloading
+// Overloading
 int Multiply(int x, int y) => x * y;
 double Multiply(double x, double y) => x * y;`;
 
@@ -115,6 +115,44 @@ string formatted = string.Format("Age: {0}", 30);`;
 // - Use meaningful variable names
 // - Keep methods short and focused
 // - Avoid magic numbers by using constants`;
+
+  // Expected Outputs
+  conditionalsOutput = `Adult
+Just turned adult`;
+
+  loopsOutput = `0
+1
+2
+3
+4
+0
+1
+2
+3
+4
+a
+b
+c`;
+
+  arraysOutput = `[1, 2, 3]
+[0, 0]
+[0, 0]
+[1, 2]
+[3, 4, 5]`;
+
+  methodsOutput = `Hello John
+15
+52
+42
+100
+100.0`;
+
+  stringsOutput = `John Doe
+Hello, John Doe!
+Age: 30`;
+
+  commentsOutput = `// Output is not affected by comments directly.
+Code stays clean and readable.`;
 
   constructor(private controlFlowService: ControlFlowService) {}
 

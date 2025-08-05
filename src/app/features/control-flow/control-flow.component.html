@@ -1,8 +1,8 @@
 <h2>Control Flow Concepts</h2>
 
-<!-- CONDITIONALS -->
+<!-- Repeated Section Template -->
 <section *ngIf="conditionals.length">
-  <h3>Conditional Statements</h3>
+  <h3>🧠 Conditionals</h3>
   <p><strong>Types:</strong> {{ conditionals.join(", ") }}</p>
   <button
     (click)="showExample = showExample === 'conditionals' ? '' : 'conditionals'"
@@ -12,13 +12,16 @@
   <pre
     *ngIf="showExample === 'conditionals'"
   ><code [innerText]="conditionalsExample"></code></pre>
+  <div *ngIf="showExample === 'conditionals'" class="output-block">
+    <p class="output-label">🧠 Output for Conditionals:</p>
+    <pre><code [innerText]="conditionalsOutput"></code></pre>
+  </div>
 </section>
 
 <hr />
 
-<!-- LOOPS -->
 <section *ngIf="loops.length">
-  <h3>Loops</h3>
+  <h3>🔁 Loops</h3>
   <p><strong>Types:</strong> {{ loops.join(", ") }}</p>
   <button (click)="showExample = showExample === 'loops' ? '' : 'loops'">
     {{ showExample === "loops" ? "Hide Example" : "Show Example" }}
@@ -26,13 +29,16 @@
   <pre
     *ngIf="showExample === 'loops'"
   ><code [innerText]="loopsExample"></code></pre>
+  <div *ngIf="showExample === 'loops'" class="output-block">
+    <p class="output-label">🔁 Output for Loops:</p>
+    <pre><code [innerText]="loopsOutput"></code></pre>
+  </div>
 </section>
 
 <hr />
 
-<!-- ARRAYS -->
 <section *ngIf="arrays.length">
-  <h3>Arrays</h3>
+  <h3>📦 Arrays</h3>
   <ul>
     <li *ngFor="let item of arrays">{{ item }}</li>
   </ul>
@@ -42,13 +48,16 @@
   <pre
     *ngIf="showExample === 'arrays'"
   ><code [innerText]="arraysExample"></code></pre>
+  <div *ngIf="showExample === 'arrays'" class="output-block">
+    <p class="output-label">📦 Output for Arrays:</p>
+    <pre><code [innerText]="arraysOutput"></code></pre>
+  </div>
 </section>
 
 <hr />
 
-<!-- METHODS -->
 <section *ngIf="methods.length">
-  <h3>Methods</h3>
+  <h3>🛠️ Methods</h3>
   <ul>
     <li *ngFor="let item of methods">{{ item }}</li>
   </ul>
@@ -58,13 +67,16 @@
   <pre
     *ngIf="showExample === 'methods'"
   ><code [innerText]="methodsExample"></code></pre>
+  <div *ngIf="showExample === 'methods'" class="output-block">
+    <p class="output-label">🛠️ Output for Methods:</p>
+    <pre><code [innerText]="methodsOutput"></code></pre>
+  </div>
 </section>
 
 <hr />
 
-<!-- STRINGS -->
 <section *ngIf="strings.length">
-  <h3>Strings</h3>
+  <h3>✏️ Strings</h3>
   <ul>
     <li *ngFor="let item of strings">{{ item }}</li>
   </ul>
@@ -74,13 +86,16 @@
   <pre
     *ngIf="showExample === 'strings'"
   ><code [innerText]="stringsExample"></code></pre>
+  <div *ngIf="showExample === 'strings'" class="output-block">
+    <p class="output-label">✏️ Output for Strings:</p>
+    <pre><code [innerText]="stringsOutput"></code></pre>
+  </div>
 </section>
 
 <hr />
 
-<!-- COMMENTS -->
 <section *ngIf="comments.length">
-  <h3>Comments & Best Practices</h3>
+  <h3>💬 Comments & Best Practices</h3>
   <ul>
     <li *ngFor="let item of comments">{{ item }}</li>
   </ul>
@@ -90,4 +105,8 @@
   <pre
     *ngIf="showExample === 'comments'"
   ><code [innerText]="commentsExample"></code></pre>
+  <div *ngIf="showExample === 'comments'" class="output-block">
+    <p class="output-label">💬 Output for Comments:</p>
+    <pre><code [innerText]="commentsOutput"></code></pre>
+  </div>
 </section>
