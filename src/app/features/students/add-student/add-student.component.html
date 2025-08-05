@@ -1,0 +1,15 @@
+<h2>Add Student</h2>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <input name="name" [(ngModel)]="student.name" required placeholder="Name" />
+  <input
+    name="email"
+    [(ngModel)]="student.email"
+    required
+    placeholder="Email"
+  />
+  <label>
+    <input type="checkbox" name="enrolled" [(ngModel)]="student.enrolled" />
+    Enrolled
+  </label>
+  <button type="submit">Add</button>
+</form>
