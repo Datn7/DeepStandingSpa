@@ -17,6 +17,7 @@ import { AdvancedComponent } from './features/advanced/advanced.component';
 import { StudentsListComponent } from './features/students/students-list/students-list.component';
 import { AddStudentComponent } from './features/students/add-student/add-student.component';
 import { EditStudentComponent } from './features/students/edit-student/edit-student.component';
+import { StudentDetailsComponent } from './features/students/student-details/student-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,4 +38,5 @@ export const routes: Routes = [
   { path: 'students', component: StudentsListComponent },
   { path: 'add', component: AddStudentComponent },
   { path: 'students/:id', component: EditStudentComponent },
+  { path: 'students/:id/details', component: StudentDetailsComponent },
 ];
