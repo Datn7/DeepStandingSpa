@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlFlowService } from '../../services/control-flow.service';
+import { ControlFlowExample } from '../../models/control-flow.model';
 
 @Component({
   selector: 'app-control-flow',
@@ -10,170 +11,50 @@ import { ControlFlowService } from '../../services/control-flow.service';
   styleUrl: './control-flow.component.scss',
 })
 export class ControlFlowComponent implements OnInit {
-  conditionals: string[] = [];
-  loops: string[] = [];
-  arrays: string[] = [];
-  methods: string[] = [];
-  strings: string[] = [];
-  comments: string[] = [];
+  conditionals: ControlFlowExample[] = [];
+  loops: ControlFlowExample[] = [];
+  arrays: ControlFlowExample[] = [];
+  methods: ControlFlowExample[] = [];
+  strings: ControlFlowExample[] = [];
+  comments: ControlFlowExample[] = [];
 
-  showExample = '';
-
-  // Code Examples
-  conditionalsExample = `int age = 18;
-if (age >= 18)
-{
-    Console.WriteLine("Adult");
-}
-else
-{
-    Console.WriteLine("Minor");
-}
-
-switch (age)
-{
-    case 18:
-        Console.WriteLine("Just turned adult");
-        break;
-    default:
-        Console.WriteLine("Other age");
-        break;
-}`;
-
-  loopsExample = `for (int i = 0; i < 5; i++)
-{
-    Console.WriteLine(i);
-}
-
-int j = 0;
-while (j < 5)
-{
-    Console.WriteLine(j);
-    j++;
-}
-
-do
-{
-    Console.WriteLine(j);
-    j++;
-} while (j < 5);
-
-foreach (var item in new[] { "a", "b", "c" })
-{
-    Console.WriteLine(item);
-}`;
-
-  arraysExample = `int[] nums = { 1, 2, 3 }; // Single-dimensional
-
-int[,] matrix = new int[2, 2]; // Multi-dimensional
-
-int[][] jagged = new int[2][]; // Jagged
-jagged[0] = new int[] { 1, 2 };
-jagged[1] = new int[] { 3, 4, 5 };`;
-
-  methodsExample = `void Greet(string name)
-{
-    Console.WriteLine("Hello " + name);
-}
-
-int Add(int a, int b)
-{
-    return a + b;
-}
-
-void Update(ref int x)
-{
-    x += 10;
-}
-
-void TryGet(out int result)
-{
-    result = 42;
-}
-
-// Overloading
-int Multiply(int x, int y) => x * y;
-double Multiply(double x, double y) => x * y;`;
-
-  stringsExample = `string firstName = "John";
-string lastName = "Doe";
-
-string fullName = firstName + " " + lastName;
-
-string greeting = $"Hello, {fullName}!";
-
-string formatted = string.Format("Age: {0}", 30);`;
-
-  commentsExample = `// This is a single-line comment
-
-/* 
-  This is a 
-  multi-line comment 
-*/
-
-// Best Practices:
-// - Use meaningful variable names
-// - Keep methods short and focused
-// - Avoid magic numbers by using constants`;
-
-  // Expected Outputs
-  conditionalsOutput = `Adult
-Just turned adult`;
-
-  loopsOutput = `0
-1
-2
-3
-4
-0
-1
-2
-3
-4
-a
-b
-c`;
-
-  arraysOutput = `[1, 2, 3]
-[0, 0]
-[0, 0]
-[1, 2]
-[3, 4, 5]`;
-
-  methodsOutput = `Hello John
-15
-52
-42
-100
-100.0`;
-
-  stringsOutput = `John Doe
-Hello, John Doe!
-Age: 30`;
-
-  commentsOutput = `// Output is not affected by comments directly.
-Code stays clean and readable.`;
+  showExamples: { [title: string]: boolean } = {};
 
   constructor(private controlFlowService: ControlFlowService) {}
 
   ngOnInit(): void {
-    this.loadData();
+    this.loadAll();
   }
 
-  loadData() {
-    this.controlFlowService
-      .getConditionals()
-      .subscribe((res) => (this.conditionals = res));
-    this.controlFlowService.getLoops().subscribe((res) => (this.loops = res));
-    this.controlFlowService.getArrays().subscribe((res) => (this.arrays = res));
-    this.controlFlowService
-      .getMethods()
-      .subscribe((res) => (this.methods = res));
-    this.controlFlowService
-      .getStrings()
-      .subscribe((res) => (this.strings = res));
-    this.controlFlowService
-      .getComments()
-      .subscribe((res) => (this.comments = res));
+  loadAll() {
+    this.controlFlowService.getConditionals().subscribe((res) => {
+      this.conditionals = res;
+      res.forEach((ex) => (this.showExamples[ex.title] = false));
+    });
+
+    this.controlFlowService.getLoops().subscribe((res) => {
+      this.loops = res;
+      res.forEach((ex) => (this.showExamples[ex.title] = false));
+    });
+
+    this.controlFlowService.getArrays().subscribe((res) => {
+      this.arrays = res;
+      res.forEach((ex) => (this.showExamples[ex.title] = false));
+    });
+
+    this.controlFlowService.getMethods().subscribe((res) => {
+      this.methods = res;
+      res.forEach((ex) => (this.showExamples[ex.title] = false));
+    });
+
+    this.controlFlowService.getStrings().subscribe((res) => {
+      this.strings = res;
+      res.forEach((ex) => (this.showExamples[ex.title] = false));
+    });
+
+    this.controlFlowService.getComments().subscribe((res) => {
+      this.comments = res;
+      res.forEach((ex) => (this.showExamples[ex.title] = false));
+    });
   }
 }

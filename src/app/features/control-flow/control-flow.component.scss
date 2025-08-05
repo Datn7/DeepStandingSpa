@@ -12,35 +12,59 @@
   }
 
   section {
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-    color: #e0e0e0;
+    margin-bottom: 3rem;
 
     h3 {
       color: #4fc3f7;
-      margin-top: 0;
+      font-size: 1.4rem;
+    }
+  }
+
+  .code-block {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    color: #e0e0e0;
+
+    &.green {
+      border-left: 5px solid #4caf50;
     }
 
-    ul {
-      margin: 1rem 0;
-      padding-left: 1.5rem;
-      list-style: square;
+    &.blue {
+      border-left: 5px solid #2196f3;
     }
 
-    button {
-      margin-top: 0.5rem;
-      background-color: #333;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 5px;
-      cursor: pointer;
+    &.purple {
+      border-left: 5px solid #9c27b0;
+    }
 
-      &:hover {
-        background-color: #555;
+    &.orange {
+      border-left: 5px solid #ff9800;
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+
+      .example-title {
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      button {
+        background-color: #333;
+        color: white;
+        padding: 4px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #555;
+        }
       }
     }
 
@@ -48,28 +72,32 @@
       background-color: #2d2d2d;
       color: #c3e88d;
       padding: 1rem;
-      margin-top: 1rem;
       border-radius: 6px;
       overflow-x: auto;
       font-size: 0.9rem;
-    }
-
-    code {
-      white-space: pre-wrap;
-      display: block;
+      line-height: 1.5;
+      margin-top: 0.5rem;
     }
 
     .output-block {
-      margin-top: 1rem;
-      padding: 1rem;
       background-color: #263238;
-      border-left: 4px solid #00bfa5;
+      margin-top: 1rem;
       border-radius: 6px;
+      padding: 1rem;
 
       .output-label {
-        color: #ffca28;
         font-weight: bold;
         margin-bottom: 0.5rem;
+        color: #ffca28;
+      }
+
+      pre {
+        background-color: #121212;
+        color: #fff;
+        padding: 0.75rem;
+        margin: 0;
+        border-radius: 4px;
+        line-height: 1.6;
       }
     }
   }

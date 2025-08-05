@@ -1,112 +1,46 @@
 <h2>Control Flow Concepts</h2>
 
-<!-- Repeated Section Template -->
-<section *ngIf="conditionals.length">
-  <h3>🧠 Conditionals</h3>
-  <p><strong>Types:</strong> {{ conditionals.join(", ") }}</p>
-  <button
-    (click)="showExample = showExample === 'conditionals' ? '' : 'conditionals'"
-  >
-    {{ showExample === "conditionals" ? "Hide Example" : "Show Example" }}
-  </button>
-  <pre
-    *ngIf="showExample === 'conditionals'"
-  ><code [innerText]="conditionalsExample"></code></pre>
-  <div *ngIf="showExample === 'conditionals'" class="output-block">
-    <p class="output-label">🧠 Output for Conditionals:</p>
-    <pre><code [innerText]="conditionalsOutput"></code></pre>
-  </div>
-</section>
+<ng-container
+  *ngFor="
+    let section of [
+      { title: '🧠 Conditionals', data: conditionals },
+      { title: '🔁 Loops', data: loops },
+      { title: '📦 Arrays', data: arrays },
+      { title: '🛠️ Methods', data: methods },
+      { title: '✏️ Strings', data: strings },
+      { title: '💬 Comments', data: comments }
+    ]
+  "
+>
+  <section *ngIf="section.data.length">
+    <h3>{{ section.title }}</h3>
 
-<hr />
+    <div
+      *ngFor="let ex of section.data"
+      class="code-block"
+      [ngClass]="ex.color"
+    >
+      <div class="code-header">
+        <span class="example-title">{{ ex.title }}</span>
+        <button (click)="showExamples[ex.title] = !showExamples[ex.title]">
+          {{ showExamples[ex.title] ? "Hide" : "Show" }} Example
+        </button>
+      </div>
 
-<section *ngIf="loops.length">
-  <h3>🔁 Loops</h3>
-  <p><strong>Types:</strong> {{ loops.join(", ") }}</p>
-  <button (click)="showExample = showExample === 'loops' ? '' : 'loops'">
-    {{ showExample === "loops" ? "Hide Example" : "Show Example" }}
-  </button>
-  <pre
-    *ngIf="showExample === 'loops'"
-  ><code [innerText]="loopsExample"></code></pre>
-  <div *ngIf="showExample === 'loops'" class="output-block">
-    <p class="output-label">🔁 Output for Loops:</p>
-    <pre><code [innerText]="loopsOutput"></code></pre>
-  </div>
-</section>
+      <pre
+        *ngIf="showExamples[ex.title]"
+      ><code [innerText]="ex.code"></code></pre>
 
-<hr />
+      <div
+        *ngIf="showExamples[ex.title]"
+        class="output-block"
+        [ngClass]="ex.color"
+      >
+        <p class="output-label">🔎 Output:</p>
+        <pre><code [innerText]="ex.output"></code></pre>
+      </div>
+    </div>
+  </section>
 
-<section *ngIf="arrays.length">
-  <h3>📦 Arrays</h3>
-  <ul>
-    <li *ngFor="let item of arrays">{{ item }}</li>
-  </ul>
-  <button (click)="showExample = showExample === 'arrays' ? '' : 'arrays'">
-    {{ showExample === "arrays" ? "Hide Example" : "Show Example" }}
-  </button>
-  <pre
-    *ngIf="showExample === 'arrays'"
-  ><code [innerText]="arraysExample"></code></pre>
-  <div *ngIf="showExample === 'arrays'" class="output-block">
-    <p class="output-label">📦 Output for Arrays:</p>
-    <pre><code [innerText]="arraysOutput"></code></pre>
-  </div>
-</section>
-
-<hr />
-
-<section *ngIf="methods.length">
-  <h3>🛠️ Methods</h3>
-  <ul>
-    <li *ngFor="let item of methods">{{ item }}</li>
-  </ul>
-  <button (click)="showExample = showExample === 'methods' ? '' : 'methods'">
-    {{ showExample === "methods" ? "Hide Example" : "Show Example" }}
-  </button>
-  <pre
-    *ngIf="showExample === 'methods'"
-  ><code [innerText]="methodsExample"></code></pre>
-  <div *ngIf="showExample === 'methods'" class="output-block">
-    <p class="output-label">🛠️ Output for Methods:</p>
-    <pre><code [innerText]="methodsOutput"></code></pre>
-  </div>
-</section>
-
-<hr />
-
-<section *ngIf="strings.length">
-  <h3>✏️ Strings</h3>
-  <ul>
-    <li *ngFor="let item of strings">{{ item }}</li>
-  </ul>
-  <button (click)="showExample = showExample === 'strings' ? '' : 'strings'">
-    {{ showExample === "strings" ? "Hide Example" : "Show Example" }}
-  </button>
-  <pre
-    *ngIf="showExample === 'strings'"
-  ><code [innerText]="stringsExample"></code></pre>
-  <div *ngIf="showExample === 'strings'" class="output-block">
-    <p class="output-label">✏️ Output for Strings:</p>
-    <pre><code [innerText]="stringsOutput"></code></pre>
-  </div>
-</section>
-
-<hr />
-
-<section *ngIf="comments.length">
-  <h3>💬 Comments & Best Practices</h3>
-  <ul>
-    <li *ngFor="let item of comments">{{ item }}</li>
-  </ul>
-  <button (click)="showExample = showExample === 'comments' ? '' : 'comments'">
-    {{ showExample === "comments" ? "Hide Example" : "Show Example" }}
-  </button>
-  <pre
-    *ngIf="showExample === 'comments'"
-  ><code [innerText]="commentsExample"></code></pre>
-  <div *ngIf="showExample === 'comments'" class="output-block">
-    <p class="output-label">💬 Output for Comments:</p>
-    <pre><code [innerText]="commentsOutput"></code></pre>
-  </div>
-</section>
+  <hr />
+</ng-container>
