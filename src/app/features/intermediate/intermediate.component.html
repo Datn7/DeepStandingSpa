@@ -1,0 +1,34 @@
+<h2>🧠 Intermediate C# Concepts</h2>
+
+<ng-container *ngFor="let section of topics | keyvalue">
+  <section>
+    <h3>{{ section.key }}</h3>
+
+    <div
+      *ngFor="let ex of section.value"
+      class="code-block"
+      [ngClass]="ex.color"
+    >
+      <div class="code-header">
+        <span class="example-title">{{ ex.title }}</span>
+        <button (click)="showExamples[ex.title] = !showExamples[ex.title]">
+          {{ showExamples[ex.title] ? "Hide" : "Show" }} Example
+        </button>
+      </div>
+
+      <pre
+        *ngIf="showExamples[ex.title]"
+      ><code [innerText]="ex.code"></code></pre>
+
+      <div
+        *ngIf="showExamples[ex.title]"
+        class="output-block"
+        [ngClass]="ex.color"
+      >
+        <p class="output-label">🧪 Output:</p>
+        <pre><code [innerText]="ex.output"></code></pre>
+      </div>
+    </div>
+  </section>
+  <hr />
+</ng-container>
