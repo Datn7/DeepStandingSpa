@@ -1,0 +1,11 @@
+<!-- edit-student.component.html -->
+<h2>Edit Student</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input formControlName="name" placeholder="Name" />
+  <input formControlName="email" placeholder="Email" />
+  <label>
+    <input type="checkbox" formControlName="enrolled" />
+    Enrolled
+  </label>
+  <button type="submit">Update</button>
+</form>
