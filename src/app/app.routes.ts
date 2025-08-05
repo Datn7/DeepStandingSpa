@@ -13,6 +13,7 @@ import { DelegatesComponent } from './features/delegates/delegates.component';
 import { FundamentalsComponent } from './features/fundamentals/fundamentals.component';
 import { ControlFlowComponent } from './features/control-flow/control-flow.component';
 import { IntermediateComponent } from './features/intermediate/intermediate.component';
+import { AdvancedComponent } from './features/advanced/advanced.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,4 +30,5 @@ export const routes: Routes = [
   { path: 'fundamentals', component: FundamentalsComponent },
   { path: 'control-flow', component: ControlFlowComponent },
   { path: 'intermediate', component: IntermediateComponent },
+  { path: 'advanced', component: AdvancedComponent },
 ];
