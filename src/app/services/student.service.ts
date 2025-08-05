@@ -1,9 +1,34 @@
 import { Injectable } from '@angular/core';
+import { Student } from '../models/student.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentService {
+  private students: Student[] = [
+    { id: 1, name: 'Alice', email: 'alice@example.com', enrolled: true },
+    { id: 2, name: 'Bob', email: 'bob@example.com', enrolled: false },
+  ];
+
+  getAll() {
+    return this.students;
+  }
+
+  getById(id: number) {
+    return this.students.find((s) => s.id === id);
+  }
+
+  add(student: Student) {
+    this.students.push({ ...student, id: Date.now() });
+  }
+
+  update(id: number, student: Student) {
+    const index = this.students.findIndex((s) => s.id === id);
+    if (index !== -1) {
+      this.students[index] = { ...student, id };
+    }
+  }
+
   getStudent() {
     return {
       name: 'john doe',
